@@ -11,3 +11,7 @@
 .container {
   max-width: 1140px;
 }
+
+.slick-next:before, .slick-prev:before {
+  color: #f4442e;
+}

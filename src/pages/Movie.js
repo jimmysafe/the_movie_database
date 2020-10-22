@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import Loader from '../components/Loader';
+import Loader from '../components/common/Loader';
 import { getMovie } from '../queries'
-import StarRatings from 'react-star-ratings'
 import { FaPlayCircle } from "react-icons/fa";
-import IconWrapper from '../components/IconWrapper';
-import TrailerWindow from '../components/TrailerWindow';
-import MovieInfo from '../components/MovieInfo';
+import IconWrapper from '../components/common/IconWrapper';
+import TrailerWindow from '../components/movie/TrailerWindow';
+import MovieInfo from '../components/movie/MovieInfo';
+import CastSlider from '../components/movie/CastSlider'
+import SimilarMovies from '../components/movie/SimilarMovies';
 
 const Movie = () => {
     let { movie_id } = useParams();
@@ -23,6 +24,7 @@ const Movie = () => {
         })()
     }, [movie_id])
 
+
     if(isLoading) return <Loader />
 
     const moviePoster = `https://image.tmdb.org/t/p/w300${movie.poster_path}`
@@ -30,58 +32,45 @@ const Movie = () => {
 
     return (
         <>
-        <div className="container mx-auto flex flex-wrap py-4">
-     
-              <div className="flex-1 flex justify-center">
-                <img
-                  src={moviePoster}
-                  alt={movie.title}
-                  className="w-3/5 rounded-lg"
-                />
-              </div>
-              
-              <div className="flex-1">
-                  <div>
-                    <h1 className="text-4xl">{movie.title}</h1>
-                    <StarRatings
-                        rating={movie.vote_average / 2}
-                        starDimension="15px"
-                        starSpacing="1px"
-                        starRatedColor="#F4442E"
-                        starEmptyColor="lightgrey"
-                      />
-                    <h6 className="mt-3 mb-3">{movie.tagline}</h6>
-                    <MovieInfo movie={movie}/>
-                    <p className="mt-3">{movie.overview}</p>
+        <div className="container mx-auto py-4 px-3">
+            <section className="flex flex-col md:flex-row flex-wrap w-full">
+                <div className="flex-1 flex justify-center">
+                  <img
+                    src={moviePoster}
+                    alt={movie.title}
+                    className="w-auto mb-4 md:mb-0 md:w-3/5 rounded-lg"
+                  />
+                </div>
+                <div className="flex-1">
+                  {/* MOVIE INFORMATION */}
+                  <MovieInfo movie={movie}/>
+                  
+                  {/* TRAILER BUTTON */}
+                  {trailer && (
+                    <div className="mt-5 flex justify-center items-center md:justify-start">
+                      <button 
+                          className="uppercase text-sm font-bold flex justify-center items-center rounded-full py-2 px-4 text-white bg-purple" 
+                          onClick={() => setShowTrailerWindow(true)}
+                      >
+                              <IconWrapper className="mr-1"><FaPlayCircle/></IconWrapper>
+                              Watch Trailer
+                      </button>
                   </div>
+                  )}
                 
-                {trailer && (
-                  <div className="mt-5">
-                    <button 
-                        className="uppercase text-sm font-bold flex justify-center items-center rounded-full py-2 px-4 text-white bg-purple" 
-                        onClick={() => setShowTrailerWindow(true)}
-                    >
-                            <IconWrapper className="mr-1"><FaPlayCircle/></IconWrapper>
-                            Watch Trailer
-                    </button>
                 </div>
-                )}
-                
-                
-           
-                <div className="mt-5">
-                    {/* <CastSlider cast={cast} /> */}
-                </div>
-       
-            </div>
-            {/* <div
-              className="row mt-5 animated fadeIn"
-              style={{ animationDelay: "2s" }}
-            >      
-              <MoreMovies movies={similar} title="Similar" fetchApi={this.fetchApi}/>
-            </div> */}
+              </section>
+            <section className="w-full">
+                {/* MOVIE CAST */}
+                <CastSlider cast={movie.credits.cast} />
+
+                {/* SIMILA MOVIES */}
+                <SimilarMovies similarMovies={movie.similar.results}/>
+             </section>
+              
           </div>
         { showTrailerWindow && <TrailerWindow trailerID={trailer} setShowTrailerWindow={setShowTrailerWindow}/> }
+
         </>
     )
 }

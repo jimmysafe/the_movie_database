@@ -20534,6 +20534,10 @@ video {
   max-width: 1140px;
 }
 
+.slick-next:before, .slick-prev:before {
+  color: #f4442e;
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;
