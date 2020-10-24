@@ -13,7 +13,7 @@ const MovieCard = ( { movie } ) => {
                     />
                 </div>
 
-                <div className="font-bold text-center text-gray-600 text-xs uppercase pt-3 pb-2">
+                <div className="font-bold text-center text-gray-300 text-xs uppercase pt-3 pb-2">
                     <span>{movie.title}</span>
                 </div>
                 <div className="stars flex justify-center pb-2">

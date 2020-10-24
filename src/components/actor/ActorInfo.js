@@ -14,17 +14,16 @@ const ActorInfo = ({ actor }) => {
     return (
         <div>
             <h1 className="text-4xl">{actor.name}</h1>
-            <div className="uppercase font-bold text-xs text-gray-700 mb-5">
+            <div className="uppercase font-bold text-xs text-gray-300 mb-5">
                 {actorInfo.map(info => (
-                    <div className="my-1 bg-gray-100 px-1 py-2 rounded-md flex flex-wrap items-center justify-center md:justify-start" key={info.name}>
+                    <div className="my-1 bg-lightgrey px-2 py-2 rounded-md flex flex-wrap items-center justify-center md:justify-start" key={info.name}>
                         <span>{info.name}</span>
                         {info.render()}
                     </div>
                 ))}
             </div>
-            <hr />
             <div className="mt-5">
-                <p>{actor.biography}</p>
+                <p className="text-gray-300">{actor.biography}</p>
             </div>
         </div>
     )

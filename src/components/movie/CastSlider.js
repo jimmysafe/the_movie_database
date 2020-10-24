@@ -14,7 +14,7 @@ const SliderActor = ({ name, image, id }) => {
                     src={image}
                     alt={name}
                 />
-                <span>{name}</span>
+                <span className="font-bold text-center text-gray-300 text-xs uppercase">{name}</span>
             </Link>
         </div>
     )
@@ -44,14 +44,24 @@ const CastSlider = () => {
         autoplay: false,
         responsive: [
             {
-              breakpoint: 500,
-              settings: {
-                initialSlide: 0,
-                slidesToShow: 2,
-                slidesToScroll: 1,
-                autoplay: true,
-                arrows: false              
-              }
+                breakpoint: 800,
+                settings: {
+                    initialSlide: 0,
+                    slidesToShow: 3,
+                    slidesToScroll: 2,
+                    autoplay: false,
+                    arrows: true              
+                }
+            },
+            {
+                breakpoint: 500,
+                settings: {
+                    initialSlide: 0,
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    autoplay: true,
+                    arrows: false              
+                }
             }
         ]
     };

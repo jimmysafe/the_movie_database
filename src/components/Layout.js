@@ -1,10 +1,12 @@
 import React from 'react'
+import Navbar from './Navbar'
 
 const Layout = (props) => {
     return (
-        <div>
+        <main className="bg-darkgrey">
+            <Navbar />
             {props.children}
-        </div>
+        </main>
     )
 }
 

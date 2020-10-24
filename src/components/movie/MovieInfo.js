@@ -31,9 +31,9 @@ const MovieInfo = ({ movie }) => {
             <h6 className="mt-3 mb-3">{movie.tagline}</h6>
 
             {/* INFOS */}
-            <div className="uppercase font-bold text-xs text-gray-700">
+            <div className="uppercase font-bold text-xs text-gray-300">
                 {movieInfo.map(info => (
-                    <div className="my-1 bg-gray-100 px-1 py-2 rounded-md flex flex-wrap items-center justify-center md:justify-start" key={info.name}>
+                    <div className="bg-lightgrey my-1 px-2 py-2 rounded-md flex flex-wrap items-center justify-center md:justify-start" key={info.name} >
                         <span>{info.name}</span>
                         {info.render()}
                     </div>
@@ -41,7 +41,7 @@ const MovieInfo = ({ movie }) => {
             </div>
 
             {/* DESCRIPTION */}
-            <p className="mt-3">{movie.overview}</p>
+            <p className="mt-3 text-white">{movie.overview}</p>
         </div>
     )
 }
