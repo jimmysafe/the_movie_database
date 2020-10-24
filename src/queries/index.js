@@ -2,12 +2,6 @@ import axios from 'axios'
 
 const { REACT_APP_API_URL: apiUrl, REACT_APP_API_KEY: apiKey } = process.env
 
-export const getPopular = async() => {
-    const { data } = await axios.get(`${apiUrl}/discover/movie?api_key=${apiKey}&page=`)
-    return data
-}
-
-
 export const getCategory= async(pageType) => {
     switch(pageType){
         case 'popular':
