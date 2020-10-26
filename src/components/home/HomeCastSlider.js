@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Slider from "react-slick";
 import { Link } from 'react-router-dom';
-import { useParams } from 'react-router-dom'
-import { getMovieCast } from '../../queries'
 
 const SliderActor = ({ name, image, id }) => {
     return (
@@ -20,26 +18,14 @@ const SliderActor = ({ name, image, id }) => {
     )
 }
 
-const CastSlider = () => {
-    const [cast, setCast] = useState()
-    const [isLoading, setIsLoading] = useState(true)
-    const { movie_id } = useParams()
-
-    useEffect(() => {
-        (async() => {
-            setIsLoading(true)
-            const data = await getMovieCast(movie_id)
-            setCast(data.cast.slice(0, 50))
-            setIsLoading(false)
-        })()
-    }, [movie_id])
+const HomeCastSlider = ({ cast }) => {
 
     const settings = {
         initialSlide: 0,
         dots: false,
         arrows: true,
         infinite: false,
-        slidesToShow: 4,
+        slidesToShow: 5,
         slidesToScroll: 2,
         autoplay: false,
         responsive: [
@@ -67,21 +53,19 @@ const CastSlider = () => {
     };
 
     return (
-        <div className="mt-12">
-            <h3 className="text-center font-bold uppercase mb-2">Cast</h3>
-            <div className="md:w-2/3 w-full mx-auto" >
+        <div className="mt-5">
+            <h2 className="font-semibold uppercase text-center py-2">Popular Actors</h2>
                 <Slider {...settings}>
-                    {cast && cast.map(actor => (
+                    {cast.map(actor => (
                         <SliderActor 
                             id={actor.id}
                             key={actor.id} 
                             name={actor.name} 
-                            image={!actor.profile_path || isLoading ? '/images/avatar_placeholder.svg' : `https://image.tmdb.org/t/p/w300${actor.profile_path}`} 
+                            image={!actor.profile_path ? '/images/avatar_placeholder.svg' : `https://image.tmdb.org/t/p/w300${actor.profile_path}`} 
                         />) )}
                 </Slider>
-            </div>
         </div>
     )
 }
 
-export default CastSlider
+export default HomeCastSlider

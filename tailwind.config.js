@@ -3,6 +3,10 @@ module.exports = {
     fontFamily: {
       primary: ['Montserrat', 'sans-serif']
     },
+    minHeight: {
+      sm: '200px',
+      lg: '394px'
+    },
     extend: {
       colors: {
         purple: '#2d232e',

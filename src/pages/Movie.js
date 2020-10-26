@@ -34,7 +34,7 @@ const Movie = () => {
         <>
         <div className="container mx-auto py-4 px-3">
             <section className="flex flex-col md:flex-row flex-wrap w-full">
-                <div className="flex-1 flex justify-center">
+                <div className="flex-1 flex justify-center items-start">
                   <img
                     src={moviePoster}
                     alt={movie.title}

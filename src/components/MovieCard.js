@@ -4,11 +4,11 @@ import StarRatings from 'react-star-ratings';
 
 const MovieCard = ( { movie } ) => {
     return (
-            <div className="card-container">
-                <div className="overflow-hidden rounded-lg cursor-pointer">
+            <div className="card-container flex flex-col ">
+                <div className="flex-1 overflow-hidden rounded-lg cursor-pointer">
                     <img
-                        className="w-full transition-all duration-500"
-                        src={ movie.poster_path ? `https://image.tmdb.org/t/p/w300${movie.poster_path}` : 'default' }
+                        className="w-full transition-all duration-500 min-h-sm md:min-h-lg"
+                        src={ movie.poster_path ? `https://image.tmdb.org/t/p/w300${movie.poster_path}` : '/images/movie_placeholder.svg' }
                         alt={ movie.title }
                     />
                 </div>

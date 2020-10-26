@@ -47,3 +47,8 @@ export const getSearch = async(query) => {
     const { data } = await axios.get(`${apiUrl}/search/movie?api_key=${apiKey}&query=${query}&page=`)
     return data
 }
+
+export const getPopularActors = async() => {
+    const { data } = await axios.get(`${apiUrl}/person/popular?api_key=${apiKey}&page=1`)
+    return data
+}

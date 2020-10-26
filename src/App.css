@@ -8,6 +8,11 @@
   @apply font-primary;
 }
 
+*:focus, *:active {
+  outline: none;
+  border: none;
+}
+
 body {
   background-color: #313131;
 }

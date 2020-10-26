@@ -23,7 +23,7 @@ const Actor = () => {
 
     if(isLoading) return <Loader />
 
-    const actorPhoto = actor.profile_path ? `https://image.tmdb.org/t/p/w300${actor.profile_path}` : '/logo512.png'
+    const actorPhoto = actor.profile_path ? `https://image.tmdb.org/t/p/w300${actor.profile_path}` : '/images/avatar_placeholder.svg'
 
     return (
         <div className="container mx-auto py-4 px-3">

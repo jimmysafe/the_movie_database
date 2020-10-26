@@ -7,6 +7,7 @@ import ScrollToTop from './components/common/ScrollToTop';
 import Actor from './pages/Actor';
 import Genre from './pages/Genre';
 import Searched from './pages/Searched';
+import Home from './pages/Home';
 
 const App = () => {
   return (
@@ -14,7 +15,9 @@ const App = () => {
       <ScrollToTop />
       <Layout>
         <Switch>
-          <Redirect exact from="/" to="/popular" />
+          <Route exact path="/">
+              <Home />
+          </Route>
           <Route path="/popular">
               <Category />
           </Route>

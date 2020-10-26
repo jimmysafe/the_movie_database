@@ -19,7 +19,7 @@ const Navbar = () => {
     
     return (
         <>
-        <nav className="py-5 bg-red">
+        <nav className="py-5 bg-red flex items-center" style={{ minHeight: '88px' }}>
             <div className="container relative mx-auto flex justify-between items-center px-2" >
                 <div className="flex flex-1 justify-start items-center">
                     <div onClick={() => setShowSearchBar(!showSearchBar) }>
@@ -30,7 +30,7 @@ const Navbar = () => {
                     {showSearchBar && <SearchBar />}
                 </div>
                 <div onClick={() => history.replace("/")}> 
-                    <IconWrapper color="white" className="w-12 h-12 cursor-pointer">
+                    <IconWrapper color="white" className={`w-12 h-12 cursor-pointer ${showSearchBar ? 'hidden md:block' : ''}`}>
                         <SiThemoviedatabase />
                     </IconWrapper>
                 </div>     
