@@ -3,6 +3,7 @@ import Loader from '../components/common/Loader'
 import { getSearch } from '../queries'
 import List from '../components/List'
 import { useLocation, useHistory } from 'react-router-dom'
+import Pagination from '../components/Pagination'
 
 const Searched = () => {
     const location = useLocation()
@@ -15,19 +16,21 @@ const Searched = () => {
 
     useEffect(() => {
         (async() => {
-            const data = await getSearch(query)
-            console.log(data)
+            const currentPage = location.search.split("&page=")[1]
+            const data = await getSearch(query, currentPage)
             setMovies(data.results)
             setIsLoading(false)
         })()
-    }, [query])
+    }, [query, location.search])
 
     if(isLoading) return <Loader />
 
 
     return (
         <div>
+            <Pagination searchedMovie />
             <List movies={movies}/>
+            <Pagination searchedMovie />
         </div>
     )
 }

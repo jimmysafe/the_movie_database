@@ -40,6 +40,7 @@ const Home = () => {
                     slidesToShow={1} 
                     slidesToScroll={1}
                     height="50vh"
+                    link="/upcoming"
                 />
             </section>
             <section className="w-full md:w-4/12 ">
@@ -49,6 +50,7 @@ const Home = () => {
                     slidesToShow={1} 
                     slidesToScroll={1}
                     height="50vh"
+                    link="/popular"
                 />
             </section>
             <section className="w-full">
@@ -58,6 +60,7 @@ const Home = () => {
                     slidesToShow={4} 
                     slidesToScroll={1}
                     height="400px"
+                    link="/top_rated"
                     responsive={[
                         {
                             breakpoint: 800,

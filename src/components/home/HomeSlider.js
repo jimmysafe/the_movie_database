@@ -2,8 +2,7 @@ import React from 'react'
 import Slider from "react-slick";
 import { Link } from 'react-router-dom';
 
-const HomeSlider = ({ movies, title, slidesToShow, slidesToScroll, height, responsive }) => {
-
+const HomeSlider = ({ movies, title, link, slidesToShow, slidesToScroll, height, responsive }) => {
     let _responsive = []
     if(responsive) _responsive = responsive
 
@@ -20,7 +19,14 @@ const HomeSlider = ({ movies, title, slidesToShow, slidesToScroll, height, respo
 
     return (
         <div className="mt-5">
-            <h2 className="font-semibold uppercase text-center py-2">{title}</h2>
+            <div className="flex justify-center items-center">
+                <h2 className="font-semibold uppercase text-center py-2">{title}</h2>
+                <Link to={{ pathname: link, search: "?page=1" }}>
+                    <span className="cursor-pointer ml-2 bg-purple p-2 text-white uppercase font-semibold text-xs">
+                        View All
+                    </span>
+                </Link>
+            </div>
             <Slider {...settings}>
                 {movies && movies.map(movie => (
                     <div key={movie.id} className="text-center p-2 cursor-pointer" >

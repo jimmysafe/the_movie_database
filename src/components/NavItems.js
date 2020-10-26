@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { getGenresList } from '../queries'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import IconWrapper from './common/IconWrapper'
 import { IoIosClose } from 'react-icons/io'
 
@@ -24,9 +24,9 @@ const NavItems = ({ setOpen, open }) => {
                 </div>
                 <ul className="flex flex-col uppercase text-xs font-bold text-red justify-center items-center">
                     {genres.map(genre => (
-                        <NavLink key={genre.id} exact to={`/genre/${genre.id}`} activeClassName="active" onClick={() => setOpen(false)}>
+                        <Link key={genre.id} to={{ pathname: `/genre/${genre.id}`, search: "?page=1"  }} onClick={() => setOpen(false)}>
                             <li className="mb-2 cursor-pointer">{genre.name}</li>
-                        </NavLink>
+                        </Link>
                     ))}
                 </ul>
             </div>

@@ -7,7 +7,7 @@ const SearchBar = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        history.replace(`/search?query=${value}`)
+        history.replace(`/search?query=${value}&page=1`)
     }
 
     return (

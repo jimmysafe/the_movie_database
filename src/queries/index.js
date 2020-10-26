@@ -2,24 +2,24 @@ import axios from 'axios'
 
 const { REACT_APP_API_URL: apiUrl, REACT_APP_API_KEY: apiKey } = process.env
 
-export const getCategory= async(pageType) => {
+export const getCategory= async(pageType, pageN) => {
     switch(pageType){
         case 'popular':
-            const { data: populars } = await axios.get(`${apiUrl}/discover/movie?api_key=${apiKey}&page=`)
+            const { data: populars } = await axios.get(`${apiUrl}/discover/movie?api_key=${apiKey}&page=${pageN}`)
             return populars
         case 'top_rated':
-            const { data: topRated } = await axios.get(`${apiUrl}/movie/top_rated?api_key=${apiKey}&page=`)
+            const { data: topRated } = await axios.get(`${apiUrl}/movie/top_rated?api_key=${apiKey}&page=${pageN}`)
             return topRated
         case 'upcoming':
-            const { data: upcomings } = await axios.get(`${apiUrl}/movie/upcoming?api_key=${apiKey}&page=`)
+            const { data: upcomings } = await axios.get(`${apiUrl}/movie/upcoming?api_key=${apiKey}&page=${pageN}`)
             return upcomings
         default:
             return null;
     }
 }
 
-export const getGenre = async(genre_id) => {
-    const { data } = await axios.get(`${apiUrl}/discover/movie?api_key=${apiKey}&with_genres=${genre_id}&page=`)
+export const getGenre = async(genre_id, pageN) => {
+    const { data } = await axios.get(`${apiUrl}/discover/movie?api_key=${apiKey}&with_genres=${genre_id}&page=${pageN}`)
     return data
 }
 
@@ -43,8 +43,8 @@ export const getActor = async(id) => {
     return data
 }
 
-export const getSearch = async(query) => {
-    const { data } = await axios.get(`${apiUrl}/search/movie?api_key=${apiKey}&query=${query}&page=`)
+export const getSearch = async(query, pageN) => {
+    const { data } = await axios.get(`${apiUrl}/search/movie?api_key=${apiKey}&query=${query}&page=${pageN}`)
     return data
 }
 

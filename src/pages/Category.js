@@ -3,6 +3,7 @@ import Loader from '../components/common/Loader'
 import { getCategory } from '../queries'
 import List from '../components/List'
 import { useLocation } from 'react-router-dom'
+import Pagination from '../components/Pagination'
 
 const Category = () => {
     const location = useLocation()
@@ -13,18 +14,21 @@ const Category = () => {
 
     useEffect(() => {
         (async() => {
-            const data = await getCategory(pageType)
+            const currentPage = location.search.split("?page=")[1]
+            const data = await getCategory(pageType, currentPage)
             setMovies(data.results)
             setIsLoading(false)
         })()
-    }, [])
+    }, [pageType, location.search])
 
     if(isLoading) return <Loader />
 
 
     return (
         <div>
+            <Pagination />
             <List movies={movies}/>
+            <Pagination />
         </div>
     )
 }
