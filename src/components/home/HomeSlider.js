@@ -34,7 +34,7 @@ const HomeSlider = ({ movies, title, link, slidesToShow, slidesToScroll, height,
                             <div
                                 className="flex justify-center items-center bg-center bg-cover bg-no-repeat rounded-lg overflow-hidden" 
                                 style={{ 
-                                    backgroundImage: `url(https://image.tmdb.org/t/p/w780${movie.backdrop_path})`,
+                                    backgroundImage: movie.backdrop_path ? `url(https://image.tmdb.org/t/p/w780${movie.backdrop_path})` : 'url(/images/logo.png)',
                                     height
                                 }}
                             >

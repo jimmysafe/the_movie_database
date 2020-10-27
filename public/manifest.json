@@ -1,15 +1,17 @@
 {
     "short_name": "The Movie Database",
-    "name": "The Movie Database PWA",
+    "name": "The Movie Database",
     "icons": [
         {
-            "src": "/images/logo.pmg",
+            "src": "logo.png",
             "type": "image/png",
-            "sizes": "500x500"
+            "sizes": "600x600",
+            "purpose": "any maskable"
         }
     ],
     "start_url": ".",
     "display": "standalone",
     "theme_color": "#313131",
-    "background_color": "#313131"
+    "background_color": "#313131",
+    "prefer_related_applications": true
 }
